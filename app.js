@@ -51,4 +51,24 @@ const showPokemonGen = (data) => {
       }
     );
   })
+
+  $('form').on('submit', event => {
+    event.preventDefault()
+    const userInput = $('#search-poke').val()
+    $('.poke-search').remove()
+
+     $.ajax({
+        url:`https://pokeapi.co/api/v2/pokemon/${userInput}?limit=20&offset=20`
+     }).then(
+         (data)=>{
+
+           console.log(data);
+
+           const $search = $('<div>').addClass('poke-search').text(`${data.name} is a ${data.types[0].type.name} type.`).appendTo($('.poke_container'))
+        },
+        ()=>{
+          console.log('bad request');
+      }
+    );
+  })
 })
