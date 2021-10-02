@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="style.css">
-        <script src="app.js" charset="utf-8"></script>
-    </head>
-    <body>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" charset="utf-8"></script>
+</head>
+<body>
+  <header>
+    <h1>Pokédex</h1>
+    <div class="gen_container">
+      <button type="button" class="gen" value="1">Generation I</button>
+      <button type="button" class="gen" value="2">Generation II</button>
+      <button type="button" class="gen" value="3">Generation III</button>
+      <button type="button" class="gen" value="4">Generation IV</button>
+      <button type="button" class="gen" value="5">Generation V</button>
+      <button type="button" class="gen" value="6">Generation VI</button>
+      <button type="button" class="gen" value="7">Generation VII</button>
+      <button type="button" class="gen" value="8">Generation VIII</button>
+    </div>
+  </header>
 
-      <h1>Pokédex/Choose that Pokémon</h1>
+  <div class="form_container">
+    <form class="" action="index.html" method="post">
+      <label for="search">
+        <input type="text" id='search-poke' />
+      </label>
+      <button type="submit">Search</button>
+    </form>
+  </div>
 
-      <div class="form_container">
-        <form class="" action="index.html" method="post">
-          <label for="search">
-            <input type="text" id='search-poke' />
-          </label>
-          <button type="submit">Search</button>
-        </form>
-      </div>
-
-      <div class="gen_container">
-        <button type="button" class="gen" value="1">Generation I</button>
-        <button type="button" class="gen" value="2">Generation II</button>
-        <button type="button" class="gen" value="3">Generation III</button>
-        <button type="button" class="gen" value="4">Generation IV</button>
-        <button type="button" class="gen" value="5">Generation V</button>
-        <button type="button" class="gen" value="6">Generation VI</button>
-        <button type="button" class="gen" value="7">Generation VII</button>
-        <button type="button" class="gen" value="8">Generation VIII</button>
-      </div>
-
-      <div class="poke_container"> </div>
+  <div class="poke_container"> </div>
 
       <!-- <div class="choose_container"></div> -->
     </body>
