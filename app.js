@@ -5,7 +5,22 @@ const showPokemonGen = (data) => {
     // console.log(Object.keys(data).length);
     const $pokemon = $('<div>').addClass('pokemon').attr('id', i) .appendTo($('.poke_container'))
 
-    const $newButton = $('<button>').val(data.pokemon_species[i].name).text(data.pokemon_species[i].name).addClass('read-more').appendTo($pokemon)
+    const $newButton = $('<button>').val(data.pokemon_species[i].name).attr('id', data.pokemon_species[i].name).text(data.pokemon_species[i].name).addClass('read-more').appendTo($pokemon)
+
+    let name =  $('.read-more').get(i).id ;
+    // console.log(test);
+
+    $.ajax({
+        url:`https://pokeapi.co/api/v2/pokemon/${name}?limit=200&offset=200`
+     }).then(
+         (data)=>{
+           // console.log(data);
+            let $mainImg = $('<img>').attr('src', data.sprites.other["official-artwork"].front_default).addClass('main_img').appendTo($pokemon)
+        },
+        ()=>{
+          console.log('bad request');
+      }
+    );
   }
 
   $('.read-more').on('click', event => {
@@ -26,7 +41,7 @@ const showPokemonGen = (data) => {
 
            if( $pokeData ){
              $pokeData.appendTo($(event.currentTarget).parent())
-             $imgContainer.appendTo($(event.currentTarget).parent())
+             $imgContainer.prependTo($(event.currentTarget).parent())
              $pokeData = null
            }else{
              $pokeData = $('.more-info').detach()
@@ -41,11 +56,12 @@ const showPokemonGen = (data) => {
    })
   }
 
-//pokemon api
+
 
   const $btn1 = $('.gen').on('click', (event) => {
     event.preventDefault()
       const generation = $(event.currentTarget).val()
+
       $('.pokemon').remove()
       $('.poke-search').remove()
       $('.poke_search_img').remove()
@@ -63,7 +79,7 @@ const showPokemonGen = (data) => {
     );
   })
 
-  $('form').on('submit', event => {
+ $('form').on('submit', event => {
     event.preventDefault()
     const userInput = $('#search-poke').val()
 
@@ -82,7 +98,7 @@ const showPokemonGen = (data) => {
 
            const $imgSearchContainer = $('<div>').addClass('img_search_container').appendTo($('.poke_container'))
 
-           let $pokeSearchImg = $('<img>').attr('src', data.sprites.other["official-artwork"].front_default).addClass('poke_search_img').appendTo($imgSearchContainer)
+           let $pokeSearchImg = $('<img>').attr('src', data.sprites.other["official-artwork"].front_default).addClass('poke_search_img').prependTo($imgSearchContainer)
         },
         ()=>{
           console.log('bad request');
