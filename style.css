@@ -4,7 +4,7 @@
   padding: 0;
 }
 
-div, form, header, .poke_img, .poke_search_img, button, label, input, h1, .main_img{
+div, form, header, .poke_img, .poke_search_img, button, label, input, h1, .main_img, p{
   background: white;
 }
 
@@ -25,7 +25,8 @@ body{
   position: fixed;
   right: 0;
   left: 0;
-  z-index: 999;
+  /* the higher the z-index the 'higher' it is on the page */
+  z-index: 100;
   margin-top: 0;
   background-color: transparent;
   margin-left: 6em;
@@ -36,6 +37,19 @@ body{
   height: 50px;
   font-size: 1.5em;
   flex-grow: 1;
+  background-color: red;
+}
+
+.gen:hover{
+  background-color: blue;
+}
+
+.gen:visited{
+  background-color: blue;
+}
+
+.gen:focus{
+  background-color: blue;
 }
 
 #I {
@@ -52,12 +66,6 @@ h1{
   padding-top: 75px;
 }
 
-/* .pokemon{
-  display: flex;
-  flex-wrap: wrap;
-
-} */
-
 
 button{
   background-color:red;
@@ -71,8 +79,29 @@ button{
   align-items: center;
 }
 
-.read_more{
-  display: inline-block;
+.main_img{
+  border: 2px solid black;
+  width: 300px;
+  height: 300px;
+  display: block;
+  margin-top: 10px;
+}
+
+.read-more{
+  width: 305px;
+  height: 40px;
+}
+
+.read-more:hover{
+  background-color: blue;
+}
+
+.read-more:visited{
+  background-color: blue;
+}
+
+.read-more:focus{
+  background-color: blue;
 }
 
 .form_container{
@@ -82,21 +111,64 @@ button{
   justify-content: center;
 }
 
-.pokemon button{
-  width: 90px;
-  height: 25px;
-}
-
 .poke_img{
-  float: right;
+  /* float: right; */
   width: 300px;
   height: 300px;
 }
 
-.main_img{
-  border: 2px solid black;
+#modal {
+
+	background-color: rgba(0, 0, 0, 0.4);
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	overflow: auto;
+	display: none;
+}
+
+#modal-text {
+  padding: 20px;
+	background-color: white;
+	height: 350px;
+	width: 550px;
+	border-radius: 2px;
+	margin: 150px auto;
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+	font-family: 'Arial';
+}
+
+#modal-footer {
+	padding: 2%;
+	line-height: 120%;
+	text-align: right;
+}
+
+
+.modal-buttons {
+	padding: 14px 18px;
+	background-color: #677996;
+	border: none;
+	outline: none;
+	border-radius: 3px;
+	color: white;
+	font-family: 'Arial';
+	cursor: pointer;
+}
+
+.more-info{
+  float: right;
 }
 
 @media only screen and (min-width: 768px){
-  .gen{font-size: 1em}
+  .gen{
+    font-size: 1em
+  }
+
+  body{
+    height: 100vh;
+  }
 }
