@@ -1,10 +1,5 @@
 ## Technologies Used
-HTML
-CSS
-Javascript
-jQuery
-Ajax
-Pokemon.api
+HTML, CSS, Javascript, jQuery, Ajax, Pokemon.api
 
 ## Approach Taken
 The user is able to click on a generation and it shows all the pokemon from that generation.
