@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <meta charset="utf-8">
     <title></title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -23,11 +24,11 @@
   </header>
 
   <div class="form_container">
-    <form class="" action="index.html" method="post">
+    <form action="index.html" method="post">
       <label for="search">
-        <input type="text" id='search-poke' />
+        <input type="text" placeholder="Search by name or Id"id='search-poke' />
       </label>
-      <button type="submit">Search</button>
+      <button type="submit" id='search'>Search</button>
     </form>
   </div>
 
@@ -37,7 +38,6 @@
     <div id="modal-text">
       <div id="modal-footer">
         <button type="button" id="close" class="modal-buttons">Close</button>
-
       </div>
     </div>
   </div>

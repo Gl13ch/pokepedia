@@ -35,27 +35,21 @@ $(() => {
       }
     );
   }
-
+  //Modal
   const $open =  $('.read-more')
-
   const $modal = $('#modal')
-
   const $close = $('#close')
-
-
+  //close Modal
   const closeModal = () => {
     $modal.hide()
   }
-
-$close.on('click', closeModal);
-//------------------------------------------------------------------------------
-
+  $close.on('click', closeModal);
+  //open Modal
   $open.on('click', (event) => {
-
     const name = $(event.target).val()
     $('.more-info').remove()
     $('.img_container').remove()
-    // $('.close').remove()
+
     $modal.show()
 
     $.ajax({
@@ -86,8 +80,6 @@ $close.on('click', closeModal);
   const $btn1 = $('.gen').on('click', (event) => {
     event.preventDefault()
 
-    //stack overflow - looked up how to make a page scroll to the top when a button is clicked and this was the first thing that popped up.
-    //https://stackoverflow.com/questions/10461152/how-to-scroll-to-top-when-a-button-is-clicked
     $(window).scrollTop(0)
 
     const generation = $(event.currentTarget).val()
@@ -112,8 +104,11 @@ $close.on('click', closeModal);
   //search button.
   $('form').on('submit', event => {
     event.preventDefault()
-    const userInput = $('#search-poke').val()
-
+    //takes in the user input
+    const userInput = $('#search-poke').val().toLowerCase()
+    //clears the input after searched
+    $('#search-poke').val('')
+    //removes the searched stuff when another search is preformed
     $('.poke-search').remove()
     $('.pokemon').remove()
     $('.img_search_container').remove()
