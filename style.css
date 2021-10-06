@@ -4,7 +4,7 @@
   padding: 0;
 }
 
-div, form, header, .poke_img, .poke_search_img, button, label, input, h1, .main_img, p{
+div, form, header, .poke_img, .poke_search_img, button, label, input,h1, .main_img, p{
   background: white;
 }
 
@@ -20,8 +20,11 @@ body{
 
 h1{
   color: yellow;
-  text-shadow: -3px 0 blue, 0 3px blue, 3px 0 blue, 0  -3px blue;
+  text-shadow: -2px 0 darkblue, 0 2px darkblue, 2px 0 darkblue, 0  -2px darkblue;
   font-size: 100px;
+  font-style: italic;
+  text-align: center;
+  padding-top: 75px;
 }
 
 .gen_container{
@@ -65,12 +68,6 @@ h1{
 
 #VIII{
   border-radius: 0 0 20px 0;
-}
-
-h1{
-  text-align: center;
-  background-color: white;
-  padding-top: 75px;
 }
 
 
@@ -159,7 +156,8 @@ button{
 
 .modal-buttons {
 	padding: 14px 18px;
-	background-color: #677996;
+	background-color: blue;
+  color: yellow;
 	border: none;
 	outline: none;
 	border-radius: 3px;
@@ -175,6 +173,7 @@ button{
   width: 200px;
   height: 30px;
   border-radius: 20px;
+
 }
 
 #search{
@@ -188,8 +187,23 @@ button{
   .gen{
     font-size: 1em
   }
-
   body{
+    height: 100vh;
+  }
+}
+
+@media only screen and (max-width: 750px){
+  .gen_container{
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .gen{
+   font-size: 1em;
+
+  }
+  body{
+    margin-left: 0;
+    margin-right: 0;
     height: 100vh;
   }
 }
