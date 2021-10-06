@@ -1,7 +1,7 @@
 $(() => {
 //function that shows the pokemon according to that generation.
   const showPokemonGen = (data) => {
-    //loops over all the pokemon in the specified generation
+  //loops over all the pokemon in the specified generation
   for (let i = 0; i < Object.keys(data.pokemon_species).length; i++) {
 
     //Pokemon div. Holds an image and read-more button.
@@ -49,7 +49,7 @@ $(() => {
     const name = $(event.target).val()
     $('.more-info').remove()
     $('.img_container').remove()
-
+    $('.unavailable').remove()
     $modal.show()
 
     $.ajax({
@@ -57,17 +57,29 @@ $(() => {
        }).then(
            (data)=>{
 
-             let $pokeData = $('<div>').addClass('more-info').text(`${data.name} is a ${data.types[0].type.name} type.`)
+             let $pokeType = $('<div>').addClass('more-info')
+
+             for(let i = 0; i < Object.keys(data.types).length; i++){
+               // console.log(Object.keys(data.types).length);
+             }
+             if (Object.keys(data.types).length === 1){
+               $pokeType.append(`Type:${data.types[0].type.name}`)
+
+             }
+             else if(Object.keys(data.types).length === 2){
+              $pokeType.append(`Type: ${data.types[0].type.name} and ${data.types[1].type.name}`)
+             }
 
              const $imgContainer = $('<div>').addClass('img_container').prependTo($('#modal-text'))
 
              let $pokeImg = $('<img>').attr('src', data.sprites.other["official-artwork"].front_default).addClass('poke_img').appendTo($imgContainer)
 
-             $pokeData.appendTo($imgContainer)
-             // $pokeData.appendTo($('#modal-text'))
+            $pokeType.appendTo($imgContainer)
+            $pokeType.append(`<br> weight: ${data.weight}`)
+            $pokeType.append(`<br> height: ${data.height}`)
        },
        ()=>{
-         let $unavailableData = $('<div>').text(`Information Unavailable`).appendTo($('#modal-text'))
+         let $unavailableData = $('<div>').addClass('unavailable').text(`Information Unavailable`).prependTo($('#modal-text'))
 
          console.log('bad request')
      })
@@ -119,11 +131,29 @@ $(() => {
          (data)=>{
            // console.log(data);
 
-           const $search = $('<div>').addClass('poke-search').text(`${data.name} is a ${data.types[0].type.name} type.`).appendTo($('.poke_container'))
+           const $search = $('<div>').addClass('poke-search').appendTo($('.poke_container'))
+
+
+
+           for(let i = 0; i < Object.keys(data.types).length; i++){
+             // console.log(Object.keys(data.types).length);
+           }
+           if (Object.keys(data.types).length === 1){
+             $search.append(data.types[0].type.name)
+
+           }
+           else if(Object.keys(data.types).length === 2){
+            $search.append(`Type: ${data.types[0].type.name} and ${data.types[1].type.name}`)
+           }
+
+
 
            const $imgSearchContainer = $('<div>').addClass('img_search_container').appendTo($('.poke_container'))
 
            let $pokeSearchImg = $('<img>').attr('src', data.sprites.other["official-artwork"].front_default).addClass('poke_search_img').prependTo($imgSearchContainer)
+
+           $search.append(`<br> weight: ${data.weight}`)
+           $search.append(`<br> height: ${data.height}`)
         },
         ()=>{
           console.log('bad request');

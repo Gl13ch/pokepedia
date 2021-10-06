@@ -5,7 +5,7 @@
 }
 
 div, form, header, .poke_img, .poke_search_img, button, label, input,h1, .main_img, p{
-  background: white;
+  background: lightgray;
 }
 
 body{
@@ -15,12 +15,13 @@ body{
   margin-left: 5em;
   margin-right: 5em;
   height: 100vw;
-  background: white;
+  background: lightgray;
+  /* border: 2px solid black; */
  }
 
 h1{
   color: yellow;
-  text-shadow: -2px 0 darkblue, 0 2px darkblue, 2px 0 darkblue, 0  -2px darkblue;
+  text-shadow: -2px 0 blue, 0 2px blue, 2px 0 blue, 0  -2px blue;
   font-size: 100px;
   font-style: italic;
   text-align: center;
@@ -83,21 +84,28 @@ button{
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  gap: 2em;
 }
 
 .main_img{
+  background-color: white;
+  border-radius: 20px 20px 0 0;
   border: 2px solid black;
   width: 300px;
   height: 300px;
   display: block;
   margin-top: 10px;
-  box-shadow: 5px solid black;
+  box-shadow: 10px 10px 10px gray;
+  border-bottom: none;
 }
 
 .read-more{
+  border-top: none;
   font-size: 20px;
-  width: 305px;
+  width: 304px;
   height: 40px;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 10px 10px 10px gray;
 }
 
 .read-more:hover{
@@ -113,7 +121,7 @@ button{
 }
 
 .form_container{
-  background-color: white;
+  background-color: lightgray;
   margin-top: 20px;
   display: flex;
   justify-content: center;
@@ -144,28 +152,56 @@ button{
 	width: 550px;
 	border-radius: 2px;
 	margin: 150px auto;
-	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  box-shadow: 10px 10px 10px gray;
 }
 
 #modal-footer {
-	padding: 2%;
-	line-height: 120%;
+  background-color: white;
 	text-align: right;
 }
 
+.unavailable{
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 275px;
+  background-color: white;
+}
 
-.modal-buttons {
-	padding: 14px 18px;
+
+.close {
+	width: 3em;
+  font-size: 20px;
 	background-color: blue;
-  color: yellow;
-	border: none;
-	outline: none;
 	border-radius: 3px;
-	color: white;
+	color: yellow;
+}
+
+.close:hover{
+  background-color: red;
+}
+
+.close:visited{
+  background-color: red;
+}
+
+.close:focus{
+  background-color: red;
 }
 
 .more-info{
   float: right;
+  background-color: white;
+  font-size: 20px;
+}
+
+.img_container{
+  background-color: white;
+}
+
+.poke_img{
+  background-color: white;
+    border-radius: 20px 20px 0 0;
 }
 
 #search-poke{
@@ -173,7 +209,7 @@ button{
   width: 200px;
   height: 30px;
   border-radius: 20px;
-
+  background-color: white;
 }
 
 #search{
