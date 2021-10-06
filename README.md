@@ -1,2 +1,2 @@
-# project-one
+# Poképedia
 Beaker Project One
