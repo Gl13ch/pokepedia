@@ -1,39 +1,55 @@
+// the api used: https://pokeapi.co/
+
 $(() => {
-//function that shows the pokemon according to that generation.
-  const showPokemonGen = (data) => {
-  //loops over all the pokemon in the specified generation
-  for (let i = 0; i < Object.keys(data.pokemon_species).length; i++) {
 
-    //Pokemon div. Holds an image and read-more button.
-    const $pokemon = $('<div>').addClass('pokemon').attr('id', i) .appendTo($('.poke_container'))
-
-    //button to read-more about a certain pokemon
-    const $newButton = $('<button>').val(data.pokemon_species[i].name).attr('id', data.pokemon_species[i].name).text(`${data.pokemon_species[i].name} `).addClass('read-more').appendTo($pokemon)
-
-    //I could not figure out how to do this outside of the function I was getting undefined.
-    //grabs the id from the read-more btn and puts this into the ajax call.
-    let name =  $('.read-more').get(i).id ;
-
-    //ajax call to get the pokemon's name onto the button.
-    $.ajax({
-        url:`https://pokeapi.co/api/v2/pokemon/${name}?limit=200&offset=200`
-     }).then(
-         (data)=>{
-
-          //appends the id number of the pokemon to the button. same as .text()
-          $newButton.append(`id:${data.id}`)
-
-          //prepends the image of the pokemon to the pokemon div
-          let $mainImg = $('<img>').attr('src', data.sprites.other["official-artwork"].front_default).addClass('main_img').prependTo($pokemon)
-        },
-        ()=>{
-
-          //If there is no image available it will give it a blank img.
-          let $unavailableImg = $('<img>').attr('src', 'asdf').addClass('main_img')
-          $unavailableImg.prependTo($pokemon)
-          // console.log('bad request');
+  $.ajax({
+    url:`https://pokeapi.co/api/v2/generation/`
+  }).then(
+    (data)=>{
+      for (let i = 1; i < data.count + 1; i++) {
+        const $genButton = $('<button>').val(i).addClass('gen').attr('id', i).text(`Generation ${i}`).appendTo($('.gen_container'))
       }
-    );
+    },
+    ()=>{
+      console.log('Bad Request')
+    }
+  )
+
+  //function that shows the pokemon according to that generation.
+  const showPokemonGen = (data) => {
+    //loops over all the pokemon in the specified generation
+    for (let i = 0; i < Object.keys(data.pokemon_species).length; i++) {
+
+      //Pokemon div. Holds an image and read-more button.
+      const $pokemon = $('<div>').addClass('pokemon').attr('id', i) .appendTo($('.poke_container'))
+
+      //button to read-more about a certain pokemon
+      const $newButton = $('<button>').val(data.pokemon_species[i].name).attr('id', data.pokemon_species[i].name).text(`${data.pokemon_species[i].name} `).addClass('read-more').appendTo($pokemon)
+
+      //I could not figure out how to do this outside of the function I was getting undefined.
+      //grabs the id from the read-more btn and puts this into the ajax call.
+      let name =  $('.read-more').get(i).id ;
+
+      //ajax call to get the pokemon's name onto the button.
+      $.ajax({
+          url:`https://pokeapi.co/api/v2/pokemon/${name}?limit=200&offset=200`
+      }).then(
+          (data)=>{
+
+            //appends the id number of the pokemon to the button. same as .text()
+            $newButton.append(`id:${data.id}`)
+
+            //prepends the image of the pokemon to the pokemon div
+            let $mainImg = $('<img>').attr('src', data.sprites.other["official-artwork"].front_default).addClass('main_img').prependTo($pokemon)
+          },
+          ()=>{
+
+            //If there is no image available it will give it a blank img.
+            let $unavailableImg = $('<img>').attr('src', 'asdf').addClass('main_img')
+            $unavailableImg.prependTo($pokemon)
+            // console.log('bad request');
+        }
+      );
   }
   //Modal
   const $open =  $('.read-more')
@@ -86,27 +102,25 @@ $(() => {
    })
   }
 
-
-
-  //Clicking on a generation button.
-  const $btn1 = $('.gen').on('click', (event) => {
+  // Clicking on a generation button.
+  $(document).on('click', '.gen', (event) => {
+    console.log('clicked')
     event.preventDefault()
 
     $(window).scrollTop(0)
 
-    const generation = $(event.currentTarget).val()
+    const generation = $(event.currentTarget).attr('value')
 
     $('.pokemon').remove()
     $('.poke-search').remove()
     $('.poke_search_img').remove()
 
-  $.ajax({
-     url:`https://pokeapi.co/api/v2/generation/${generation}/?limit=5&offset=5`
-  }).then(
-      (data)=>{
-         // console.log(data);
-         showPokemonGen(data)
-      },
+    $.ajax({
+      url:`https://pokeapi.co/api/v2/generation/${generation}/?limit=5&offset=5`
+    }).then(
+        (data)=>{
+          showPokemonGen(data)
+    },
       ()=>{
         console.log('bad request');
       }
@@ -160,4 +174,5 @@ $(() => {
       }
     );
   })
+  
 })

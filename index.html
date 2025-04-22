@@ -1,48 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <meta charset="utf-8">
-    <title></title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
-    <script src="app.js" charset="utf-8"></script>
-</head>
-<body>
-  <header>
-    <div class="gen_container">
-      <button type="button" class="gen" value="1" id="I">Generation I</button>
-      <button type="button" class="gen" value="2" id="II">Generation II</button>
-      <button type="button" class="gen" value="3" id="III">Generation III</button>
-      <button type="button" class="gen" value="4" id="IV">Generation IV</button>
-      <button type="button" class="gen" value="5" id="V">Generation V</button>
-      <button type="button" class="gen" value="6" id="VI">Generation VI</button>
-      <button type="button" class="gen" value="7" id="VII">Generation VII</button>
-      <button type="button" class="gen" value="8" id="VIII">Generation VIII</button>
+  <head>
+      <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+      <meta charset="utf-8">
+      <title></title>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="style.css">
+      <script src="app.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <header>
+      <div class="gen_container">
+        <!-- <button type="button" class="gen" value="1" id="I">Generation I</button>
+        <button type="button" class="gen" value="2" id="II">Generation II</button>
+        <button type="button" class="gen" value="3" id="III">Generation III</button>
+        <button type="button" class="gen" value="4" id="IV">Generation IV</button>
+        <button type="button" class="gen" value="5" id="V">Generation V</button>
+        <button type="button" class="gen" value="6" id="VI">Generation VI</button>
+        <button type="button" class="gen" value="7" id="VII">Generation VII</button>
+        <button type="button" class="gen" value="8" id="VIII">Generation VIII</button> -->
+      </div>
+      <h1>Poképedia</h1>
+    </header>
+
+    <div class="form_container">
+      <form action="index.html" method="post">
+        <label for="search">
+          <input type="text" placeholder="Search by name or Id"id='search-poke' />
+        </label>
+        <button type="submit" id='search'>Search</button>
+      </form>
     </div>
-    <h1>Poképedia</h1>
-  </header>
 
-  <div class="form_container">
-    <form action="index.html" method="post">
-      <label for="search">
-        <input type="text" placeholder="Search by name or Id"id='search-poke' />
-      </label>
-      <button type="submit" id='search'>Search</button>
-    </form>
-  </div>
+    <div class="poke_container"></div>
 
-  <div class="poke_container"></div>
-
-  <div id='modal'>
-    <div id="modal-text">
-      <div id="modal-footer">
-        <button type="button" id="close" class="close">Close</button>
+    <div id='modal'>
+      <div id="modal-text">
+        <div id="modal-footer">
+          <button type="button" id="close" class="close">Close</button>
+        </div>
       </div>
     </div>
-  </div>
-
-
-
-    </body>
+    
+  </body>
 </html>
