@@ -2,6 +2,8 @@
 
 $(() => {
 
+  // creates the generation buttons from the api data
+  // should automatically update when new generations are added.
   $.ajax({
     url:`https://pokeapi.co/api/v2/generation/`
   }).then(
