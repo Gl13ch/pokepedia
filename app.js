@@ -17,7 +17,7 @@ $(() => {
     }
   )
 
-  //function that shows the pokemon according to that generation.
+  //function that shows the pokemon according to that generation button clicked.
   const showPokemonGen = (data) => {
     //loops over all the pokemon in the specified generation
     for (let i = 0; i < Object.keys(data.pokemon_species).length; i++) {
@@ -28,7 +28,6 @@ $(() => {
       //button to read-more about a certain pokemon
       const $newButton = $('<button>').val(data.pokemon_species[i].name).attr('id', data.pokemon_species[i].name).text(`${data.pokemon_species[i].name} `).addClass('read-more').appendTo($pokemon)
 
-      //I could not figure out how to do this outside of the function I was getting undefined.
       //grabs the id from the read-more btn and puts this into the ajax call.
       let name =  $('.read-more').get(i).id ;
 
@@ -106,7 +105,6 @@ $(() => {
 
   // Clicking on a generation button.
   $(document).on('click', '.gen', (event) => {
-    console.log('clicked')
     event.preventDefault()
 
     $(window).scrollTop(0)
@@ -126,7 +124,7 @@ $(() => {
       ()=>{
         console.log('bad request');
       }
-    );
+    )
   })
 
   //search button.
@@ -141,40 +139,34 @@ $(() => {
     $('.pokemon').remove()
     $('.img_search_container').remove()
 
-     $.ajax({
+      $.ajax({
         url:`https://pokeapi.co/api/v2/pokemon/${userInput}?limit=200&offset=200`
-     }).then(
-         (data)=>{
-           // console.log(data);
+      }).then(
+          (data)=>{
+          // console.log(data);
 
-           const $search = $('<div>').addClass('poke-search').appendTo($('.poke_container'))
+          const $search = $('<div>').addClass('poke-search').appendTo($('.poke_container'))
 
+          //  for(let i = 0; i < Object.keys(data.types).length; i++){
+          //    console.log(Object.keys(data.types).length);
+          //  }
 
-
-           for(let i = 0; i < Object.keys(data.types).length; i++){
-             // console.log(Object.keys(data.types).length);
-           }
-           if (Object.keys(data.types).length === 1){
-             $search.append(data.types[0].type.name)
-
-           }
-           else if(Object.keys(data.types).length === 2){
+          if (Object.keys(data.types).length === 1){
+            $search.append(data.types[0].type.name)
+          } else if(Object.keys(data.types).length === 2){
             $search.append(`Type: ${data.types[0].type.name} and ${data.types[1].type.name}`)
-           }
+          }
 
+          const $imgSearchContainer = $('<div>').addClass('img_search_container').appendTo($('.poke_container'))
 
+          let $pokeSearchImg = $('<img>').attr('src', data.sprites.other["official-artwork"].front_default).addClass('poke_search_img').prependTo($imgSearchContainer)
 
-           const $imgSearchContainer = $('<div>').addClass('img_search_container').appendTo($('.poke_container'))
-
-           let $pokeSearchImg = $('<img>').attr('src', data.sprites.other["official-artwork"].front_default).addClass('poke_search_img').prependTo($imgSearchContainer)
-
-           $search.append(`<br> weight: ${data.weight}`)
-           $search.append(`<br> height: ${data.height}`)
+          $search.append(`<br> weight: ${data.weight}`)
+          $search.append(`<br> height: ${data.height}`)
         },
         ()=>{
           console.log('bad request');
       }
-    );
+    )
   })
-  
 })
